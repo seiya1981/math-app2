@@ -12,8 +12,8 @@ const SubtractionCard = forwardRef(function MathCard(props, ref) {
         const defaultRandom2 = Math.floor(Math.random() * 9) + 1;
 
         
-        const [randomNumber, setRandomNumber] = useState(defaultRandom1);
-        const [randomNumber2, setRandomNumber2] = useState(defaultRandom2);
+        const [randomNumber, setRandomNumber] = useState( (defaultRandom1 > defaultRandom2) ? defaultRandom1 : defaultRandom2) ;
+        const [randomNumber2, setRandomNumber2] = useState((defaultRandom1 > defaultRandom2) ? defaultRandom2 : defaultRandom1);
         const [userAnswer, setUserAnswer] = useState('');
         const [isCorrect,setIsCorrect] = useState(null);
         
@@ -28,8 +28,10 @@ const SubtractionCard = forwardRef(function MathCard(props, ref) {
         }
 
         function handleResetRandomNumbersClick(event){
-            setRandomNumber(Math.floor(Math.random() * 9) + 1);
-            setRandomNumber2(Math.floor(Math.random() * 5) + 1);
+            const defaultRandom3 = Math.floor(Math.random() * 9) + 1;
+            const defaultRandom4 = Math.floor(Math.random() * 9) + 1;
+            setRandomNumber((defaultRandom3 > defaultRandom4) ? defaultRandom3 : defaultRandom4);
+            setRandomNumber2((defaultRandom3 > defaultRandom4) ? defaultRandom4 : defaultRandom3); 
             setUserAnswer('');
             setIsCorrect(null);
             //alert('My name is ');
